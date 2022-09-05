@@ -11,7 +11,19 @@ def main():
     )
     args = argparser.parse_args()
 
-    print(f"Now I need to process the records in {args.fasta}")
+
+    with open(args.fasta.name, "r") as file:
+        text = file.read()
+        chrom = text.split(">")
+    
+
+    for i in range(1,len(chrom)):
+        name, seq = chrom[i].split("\n", 1)
+        name = name.strip()
+        seq = seq.replace("\n", "")
+        print(name + "\t" + seq)
+
+
 
 
 if __name__ == '__main__':
