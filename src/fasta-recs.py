@@ -12,9 +12,8 @@ def main():
     args = argparser.parse_args()
 
 
-    with open(args.fasta.name, "r") as file:
-        text = file.read()
-        chrom = text.split(">")
+    text = args.fasta.read()
+    chrom = text.split(">")
     
 
     for i in range(1,len(chrom)):

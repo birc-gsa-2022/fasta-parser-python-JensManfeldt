@@ -17,18 +17,15 @@ def main():
         default=sys.stdin
     )
     args = argparser.parse_args()
-
     # Get things from cords file
-    text = ""
-    with open(args.fasta.name + "-coordinates", "r") as file:
-        text = file.read()
+
+    text = args.coords.read()
     
     coords = text.split("\n")
     # extract from fasta file
 
-    with open(args.fasta.name, "r") as file:
-        text = file.read()
-        chrom = text.split(">")
+    text = args.fasta.read()
+    chrom = text.split(">")
     
     genomeDict = dict()
     for i in range(1,len(chrom)):
