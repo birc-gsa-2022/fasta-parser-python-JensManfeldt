@@ -38,9 +38,14 @@ def main():
         genomeDict.update({name : seq})
 
     for i in range(len(coords)):
-        name, index1, index2 = coords[i].split("\t")
-        genome = genomeDict.get(name)
-        print(genome[int(index1),int(index2)])     
+        coord = coords[i].split("\t")
+        if len(coord) == 1:
+            pass
+        if len(coord) == 3:
+            genome = genomeDict.get(coord[0])
+            print(genome[int(coord[1])-1: int(coord[2])-1])
+
+             
     #print(f"Now I need to process the records in {args.fasta}")
     #print(f"and the coordinates in {args.coords}")
 
